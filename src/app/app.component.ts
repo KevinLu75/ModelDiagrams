@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ClassDiagramComponent } from "./diagramming/components/class-diagram/class-diagram.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [ClassDiagramComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

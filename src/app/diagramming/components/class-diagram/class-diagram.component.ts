@@ -1,41 +1,26 @@
-// src/app/components/class-diagram/class-diagram.component.ts
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as go from 'gojs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-class-diagram',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="flex justify-between mb-4">
-      <button (click)="addClass()" class="px-4 py-2 bg-green-500 text-white rounded-2xl shadow">Agregar Clase</button>
-      <button (click)="addRelation()" class="px-4 py-2 bg-blue-500 text-white rounded-2xl shadow">Agregar Relación</button>
-      <button (click)="exportModel()" class="px-4 py-2 bg-gray-600 text-white rounded-2xl shadow">Exportar Modelo</button>
-      <input type="file" (change)="importModel($event)" class="hidden" #fileInput />
-      <button (click)="fileInput.click()" class="px-4 py-2 bg-yellow-500 text-white rounded-2xl shadow">Importar Modelo</button>
-    </div>
-    <div #diagramDiv class="w-full h-[600px] border rounded-2xl shadow-lg"></div>
-  `,
-  styles: [
-    `
-      :host {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
-
-      div {
-        background-color: #ffffff;
-      }
-    `
-  ]
+  templateUrl: './class-diagram.component.html',
+  styles: []
 })
+
+
 export class ClassDiagramComponent implements OnInit {
   @ViewChild('diagramDiv', { static: true }) diagramRef!: ElementRef;
   private diagram!: go.Diagram;
 
-  constructor() {}
+  constructor(private router: Router) {}
+
+  goTo(route: string): void {
+    this.router.navigate([route]);
+  }
 
   ngOnInit(): void {
     this.initializeDiagram();

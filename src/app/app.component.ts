@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { ClassDiagramComponent } from "./diagramming/components/class-diagram/class-diagram.component";
-import { HomeComponent } from "./diagramming/components/home/home.component";
 import { RouterOutlet } from '@angular/router';
-
+import * as go from 'gojs';
+import { from } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,5 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'model-diagrams';
+  
 }

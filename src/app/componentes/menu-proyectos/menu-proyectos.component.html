@@ -1,0 +1,74 @@
+<div class="min-h-screen bg-[url('https://i.pinimg.com/originals/2e/e6/99/2ee6998e34c3e2eff7b894c66cfc5267.jpg')] bg-cover text-white">
+    <div class="container mx-auto px-4 py-12">
+        <!-- Título principal y botón de creación -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold mb-8">Crea tus diagramas UML</h1>
+            <button 
+                class="px-6 py-3 bg-[#12c8c1] hover:bg-[#237e7b] text-white rounded-lg transition duration-300 shadow-lg" 
+                (click)="OpenModal()">
+                Crear Nuevo Proyecto
+            </button>
+        </div>
+        
+        <!-- Subtítulo y descripción -->
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-semibold mb-2">Mis proyectos</h2>
+            <p class="text-lg text-gray-200">Seleccione un proyecto para comenzar a construir</p>
+        </div>
+        
+        <!-- Grid de proyectos -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+            <!-- Lista de proyectos con paginación -->
+            @if (proyectos && proyectos.length > 0) {
+                @for (proyecto of proyectosPaginados(); track $index) {
+                    <div class="bg-[#12c8c1]/30 backdrop-filter backdrop-blur-md rounded-lg p-6 transition transform hover:scale-105">
+                        <h3 class="text-2xl font-bold mb-3">{{proyecto.nombre}}</h3>
+                        <p class="font-normal mb-5 text-gray-100">{{proyecto.descripcion}}</p>
+                        <button 
+                            class="px-5 py-2 bg-[#23c3f8] hover:bg-[#1ba3d8] text-white rounded-lg transition shadow-md" 
+                            (click)="Ingresar(proyecto.id_proyecto, proyecto.nombre)">
+                            Ingresar
+                        </button>
+                    </div>
+                }
+            } @else {
+                <div class="col-span-3 text-center">
+                    <p class="text-xl text-gray-300 py-8 bg-black/20 backdrop-filter backdrop-blur-md rounded-lg">
+                        No hay proyectos disponibles.
+                    </p>
+                </div>
+            }
+        </div>
+
+        <!-- Paginación dinámica -->
+        @if (proyectos && totalPages > 1) {
+            <div class="flex justify-center mt-8 space-x-2">
+                <!-- Botón Previous -->
+                <button 
+                    class="px-4 py-2 bg-black/40 text-white rounded-md hover:bg-black/60 disabled:opacity-50 transition" 
+                    [disabled]="paginaActual === 1" 
+                    (click)="cambiarPagina(paginaActual - 1)">
+                    Previous
+                </button>
+
+                <!-- Números de página -->
+                @for (pagina of generarPaginas(); track $index) {
+                    <button 
+                        class="px-4 py-2 rounded-md transition" 
+                        [ngClass]="{'bg-[#f52054] text-white': paginaActual === pagina, 'bg-black/40 text-white hover:bg-black/60': paginaActual !== pagina}" 
+                        (click)="cambiarPagina(pagina)">
+                        {{pagina}}
+                    </button>
+                }
+
+                <!-- Botón Next -->
+                <button 
+                    class="px-4 py-2 bg-black/40 text-white rounded-md hover:bg-black/60 disabled:opacity-50 transition" 
+                    [disabled]="paginaActual === totalPages" 
+                    (click)="cambiarPagina(paginaActual + 1)">
+                    Next
+                </button>
+            </div>
+        }
+    </div>
+</div>

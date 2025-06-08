@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Crear Nueva Versión</h2>
+    <mat-dialog-content>
+        <form class="max-w-md mx-auto"  [formGroup]="nuevaVersion">
+            <mat-form-field appearance="outline">
+                <mat-label>Version</mat-label>
+                <input matInput type="text" formControlName="version" />
+              </mat-form-field>
+        </form>
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="onCancel()">Cancelar</button>
+      <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="nuevaVersion.invalid">
+        Crear
+      </button>
+</mat-dialog-actions>

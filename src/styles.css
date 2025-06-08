@@ -1,12 +1,98 @@
-/* You can add global styles to this file, and also import other style files */
-@import "tailwindcss";
+@import 'ngx-toastr/toastr';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Container for all toasts */
+.toast-container {
+    position: fixed;
+    z-index: 9999;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  /* Basic style for each toast */
+  .ngx-toastr {
+    min-width: 250px;
+    max-width: 350px;
+    padding: 15px 20px;
+    margin: 0.5em 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #fff;
+    opacity: 0.95;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Style variations for different toast types */
+  .toast-success {
+    background-color: #51a351; /* Green */
+  }
+  
+  .toast-error {
+    background-color: #bd362f; /* Red */
+  }
+  
+  .toast-info {
+    background-color: #2f96b4; /* Blue */
+  }
+  
+  .toast-warning {
+    background-color: #f89406; /* Orange */
+  }
+  
+  /* Optional: Add a fade-out effect */
+  .ngx-toastr.fade-out {
+    opacity: 0;
+  }
+  
 
-@theme{
-    --color-aqua: #23c3f8;
-    --color-green-aqua: #12c8c1;
-    --color-red: #f52054;
-    --color-black: #141519;
-    --color-yellow: #f5b400;
-    --color-purple: #8b5cf6;
-    
+
+/* Arreglar Angular Material form fields */
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-outline-color: rgba(255, 255, 255, 0.3);
+  --mdc-outlined-text-field-disabled-outline-color: rgba(255, 255, 255, 0.1);
+  --mdc-outlined-text-field-hover-outline-color: rgba(255, 255, 255, 0.5);
+  --mdc-outlined-text-field-focus-outline-color: #12c8c1;
+  --mdc-outlined-text-field-input-text-color: white;
+  --mdc-outlined-text-field-label-text-color: rgba(255, 255, 255, 0.7);
+  --mdc-outlined-text-field-supporting-text-color: rgba(255, 255, 255, 0.6);
 }
+
+.mat-mdc-form-field.mat-focused {
+  --mdc-outlined-text-field-focus-outline-color: #12c8c1;
+  --mdc-outlined-text-field-focus-label-text-color: #12c8c1;
+}
+
+/* Eliminar la línea problemática del outline */
+.mat-mdc-form-field .mdc-notched-outline__notch {
+  border-right: none;
+  border-left: none;
+}
+
+.mat-mdc-form-field .mdc-notched-outline__leading {
+  border-right: none;
+}
+
+.mat-mdc-form-field .mdc-notched-outline__trailing {
+  border-left: none;
+}
+
+/* Alternativa: usar filled en lugar de outline */
+.mat-mdc-form-field.mat-form-field-appearance-fill {
+  --mdc-filled-text-field-container-color: rgba(255, 255, 255, 0.1);
+  --mdc-filled-text-field-label-text-color: rgba(255, 255, 255, 0.7);
+  --mdc-filled-text-field-input-text-color: white;
+}
+/* 
+.mat-dialog-title {
+    color: white; /* Establece el color del texto a blanco 
+    background-color: black; /* opcional: para dar un fondo negro 
+} */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

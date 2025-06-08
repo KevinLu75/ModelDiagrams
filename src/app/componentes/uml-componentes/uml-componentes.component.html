@@ -1,0 +1,103 @@
+<div class="min-h-screen bg-[url('https://i.pinimg.com/originals/2e/e6/99/2ee6998e34c3e2eff7b894c66cfc5267.jpg')] bg-cover text-white">
+
+    <!-- Header -->
+    <div class="container mx-auto px-4 py-6">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-white">Diagrama de Componentes UML</h1>
+            <p class="text-lg text-gray-200 mt-2">Crea y edita diagramas de componentes interactivos</p>
+        </div>
+
+        <!-- Toolbar de herramientas -->
+        <div class="bg-black/30 backdrop-filter backdrop-blur-md rounded-lg p-4 mb-6 border border-white/20">
+            <div class="flex flex-wrap gap-3 items-center justify-center">
+                <!-- Grupo de Conexiones -->
+                <div class="flex gap-2 items-center">
+                    <span class="text-sm text-gray-300 font-medium">Conexiones:</span>
+                    <button 
+                        (click)="conectar()"
+                        class="px-4 py-2 bg-[#12c8c1]/50 hover:bg-[#12c8c1]/70 text-white rounded-lg transition duration-300 text-sm">
+                        🔗 Conectar
+                    </button>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-px h-6 bg-white/20"></div>
+
+                <!-- Grupo de Acciones -->
+                <div class="flex gap-2 items-center">
+                    <span class="text-sm text-gray-300 font-medium">Acciones:</span>
+                    <button 
+                        (click)="guardarDiagrama()"
+                        class="px-4 py-2 bg-green-500/50 hover:bg-green-500/70 text-white rounded-lg transition duration-300 text-sm">
+                        💾 Guardar
+                    </button>
+                    <button 
+                        (click)="eliminarElemento()"
+                        class="px-4 py-2 bg-red-500/50 hover:bg-red-500/70 text-white rounded-lg transition duration-300 text-sm">
+                        🗑️ Eliminar
+                    </button>
+                    <button 
+                        (click)="guardarComoImagen(diagram)"
+                        class="px-4 py-2 bg-purple-500/50 hover:bg-purple-500/70 text-white rounded-lg transition duration-300 text-sm">
+                        📄 PDF
+                    </button>
+                </div>
+
+                <!-- Separador -->
+                <div class="w-px h-6 bg-white/20"></div>
+
+                <!-- Grupo de Versiones -->
+                <div class="flex gap-2 items-center">
+                    <span class="text-sm text-gray-300 font-medium">Versiones:</span>
+                    <button 
+                        (click)="guardarNuevaVersion()"
+                        class="px-4 py-2 bg-[#8b5cf6]/50 hover:bg-[#8b5cf6]/70 text-white rounded-lg transition duration-300 text-sm">
+                        ➕ Nueva
+                    </button>
+                    <select 
+                        (change)="cargarVersion($event)"
+                        class="px-3 py-2 bg-black/40 text-white rounded-lg border border-white/20 text-sm focus:outline-none focus:ring-2 focus:ring-[#12c8c1]">
+                        @if (versiones && versiones.length > 0) {
+                            @for(version of versiones; track $index) {
+                                <option 
+                                    value="{{version.id_version}}" 
+                                    [selected]="version.id_version == versiones[0]?.id_version">
+                                    {{ version.version }}
+                                </option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Área de trabajo -->
+        <div class="grid grid-cols-12 gap-6 h-full">
+            <!-- Paleta de herramientas -->
+            <div class="col-span-12 lg:col-span-3">
+                <div class="bg-[#12c8c1]/30 backdrop-filter backdrop-blur-lg rounded-lg border border-white/20 h-full">
+                    <div class="p-4 border-b border-white/20">
+                        <h3 class="text-lg font-semibold text-white">Elementos</h3>
+                        <p class="text-sm text-gray-200">Arrastra elementos al diagrama</p>
+                    </div>
+                    <div class="p-4">
+                        <div id="myPaletteDiv" class="w-full h-64 bg-white/10 rounded-lg border border-white/20"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área de diagrama -->
+            <div class="col-span-12 lg:col-span-9">
+                <div class="bg-[#12c8c1]/20 backdrop-filter backdrop-blur-lg rounded-lg border border-white/20 h-screen">
+                    <div class="p-4 border-b border-white/20">
+                        <h3 class="text-lg font-semibold text-white">Área de Trabajo</h3>
+                        <p class="text-sm text-gray-200">Crea tu diagrama de componentes aquí</p>
+                    </div>
+                    <div class="p-4 h-[calc(100%-120px)]">
+                        <div id="myDiagramDiv" class="w-full h-full bg-white rounded-lg border border-gray-300"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

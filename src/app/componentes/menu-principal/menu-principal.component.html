@@ -1,0 +1,110 @@
+<div class="min-h-screen bg-[url('https://i.pinimg.com/originals/2e/e6/99/2ee6998e34c3e2eff7b894c66cfc5267.jpg')] bg-cover text-white flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-black/30 backdrop-filter backdrop-blur-md border-b border-white/20 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold text-white">Diagramas UML</div>
+            
+            <!-- Contenedor de botones del navbar -->
+            <div class="flex items-center gap-4">
+                <!-- Botón Crear Proyecto -->
+                <button 
+                    class="px-4 py-2 bg-green-500/50 hover:bg-green-500/70 text-white rounded-lg transition duration-300 backdrop-filter backdrop-blur-md border border-white/20 flex items-center gap-2"
+                    (click)="crearProyecto()">
+                    <span class="hidden sm:inline">Generar Proyecto</span>
+                </button>
+
+                <!-- Selector de Proyecto -->
+                <div class="relative">
+                    <button 
+                        class="px-4 py-2 bg-[#12c8c1]/30 hover:bg-[#12c8c1]/70 text-white rounded-lg transition duration-300 backdrop-filter backdrop-blur-md border border-white/20 flex items-center gap-2"
+                        (click)="toggleDropdown()">
+                        <span class="truncate max-w-48">{{ proyectoSeleccionado ? proyectoSeleccionado : 'Seleccionar Proyecto' }}</span>
+                        <span class="transform transition-transform duration-200" [class.rotate-180]="showDropdown">▼</span>
+                    </button>
+                    <div 
+                        *ngIf="showDropdown" 
+                        class="absolute right-0 mt-2 w-64 bg-[#12c8c1]/30 backdrop-filter backdrop-blur-lg rounded-lg border border-white/20 shadow-xl z-50">
+                        <div class="p-2">
+                            <button 
+                                class="w-full text-left px-4 py-2 hover:bg-white/20 rounded-lg transition duration-300 text-white font-semibold border-b border-white/20 mb-2 flex items-center gap-2"
+                                (click)="crearProyecto()">
+                                <span>➕</span>
+                                <span>Crear Nuevo Proyecto</span>
+                            </button>
+                            <div class="max-h-64 overflow-y-auto">
+                                <div *ngIf="proyectos && proyectos.length > 0; else noProyectos">
+                                    <button 
+                                        *ngFor="let proyecto of proyectos" 
+                                        class="w-full text-left px-4 py-2 hover:bg-white/20 rounded-lg transition duration-300 text-white"
+                                        (click)="seleccionarProyecto(proyecto.id_proyecto, proyecto.nombre)">
+                                        <div class="font-medium">{{proyecto.nombre}}</div>
+                                        <div class="text-sm text-gray-200 truncate">{{proyecto.descripcion}}</div>
+                                    </button>
+                                </div>
+                                <ng-template #noProyectos>
+                                    <div class="px-4 py-2 text-gray-300 text-sm">
+                                        No hay proyectos disponibles
+                                    </div>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="flex-1 flex flex-col items-center justify-center px-4">
+        <h1 class="text-7xl mb-8 text-center font-bold">Grafica tus Diagramas</h1>
+        <p class="text-xl mb-16 text-center text-gray-200">Seleccione un diagrama para comenzar a construir</p>
+        
+        <!-- Grid de diagramas más compacto -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl">
+            <div 
+                (click)="iraClases()" 
+                class="flex flex-col items-center justify-center bg-[#12c8c1]/50 backdrop-filter backdrop-blur-lg rounded-lg p-4 cursor-pointer transition transform hover:scale-105 hover:bg-[#12c8c1]/70 min-h-[120px]">
+                <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-2 p-1">
+                    <span class="text-m"><img src="diagrams/diagrama-clases.png" alt=""></span>
+                </div>
+                <h2 class="!text-base font-semibold text-center">Diagrama de Clases</h2>
+            </div>
+            
+            <div 
+                (click)="iraComponentes()" 
+                class="flex flex-col items-center justify-center bg-[#12c8c1]/50 backdrop-filter backdrop-blur-lg rounded-lg p-4 cursor-pointer transition transform hover:scale-105 hover:bg-[#12c8c1]/70 min-h-[120px]">
+                <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-2 p-1">
+                    <span class="text-m"><img src="diagrams/diagrama-componentes.png" alt=""></span>
+                </div>
+                <h2 class="!text-base font-semibold text-center">Diagrama de Componentes</h2>
+            </div>
+            
+            <div 
+                (click)="iraCU()" 
+                class="flex flex-col items-center justify-center bg-[#12c8c1]/50 backdrop-filter backdrop-blur-lg rounded-lg p-4 cursor-pointer transition transform hover:scale-105 hover:bg-[#12c8c1]/70 min-h-[120px]">
+                <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-2 p-1">
+                    <span class="text-m"><img src="diagrams/diagrama-caso-de-uso.png" alt=""></span>
+                </div>
+                <h2 class="!text-base font-semibold text-center">Diagrama de Casos de Uso</h2>
+            </div>
+            
+            <div 
+                (click)="iraSecuencias()" 
+                class="flex flex-col items-center justify-center bg-[#12c8c1]/50 backdrop-filter backdrop-blur-lg rounded-lg p-4 cursor-pointer transition transform hover:scale-105 hover:bg-[#12c8c1]/70 min-h-[120px]">
+                <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-2 p-1">
+                    <span class="text-m"><img src="diagrams/diagrama-secuencia.png" alt=""></span>
+                </div>
+                <h2 class="!text-base font-semibold text-center">Diagrama de Secuencia</h2>
+            </div>
+            
+            <div 
+                (click)="iraPaquetes()" 
+                class="flex flex-col items-center justify-center bg-[#12c8c1]/50 backdrop-filter backdrop-blur-lg rounded-lg p-4 cursor-pointer transition transform hover:scale-105 hover:bg-[#12c8c1]/70 min-h-[120px]">
+                <div class="w-14 h-14 bg-white/20 rounded-lg flex items-center justify-center mb-2 p-1">
+                    <span class="text-m"><img src="diagrams/diagrama-paquetes.png" alt=""></span>
+                </div>
+                <h2 class="!text-base font-semibold text-center">Diagrama de Paquetes</h2>
+            </div>
+        </div>
+    </div>
+</div>

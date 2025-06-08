@@ -1,0 +1,265 @@
+/* Estilos para los contenedores de GoJS */
+div[data-diagram] {
+  background: white;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos específicos para paleta y diagrama */
+.palette {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.diagram {
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos para el select personalizado */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  appearance: none;
+}
+
+select option {
+  background: #1f2937;
+  color: white;
+}
+
+/* Estilos para el slider de profundidad */
+input[type="range"] {
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background: #12c8c1;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #12c8c1;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Responsivo para/* Estilos para los contenedores de GoJS */
+div[data-diagram] {
+  background: white;
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos específicos para paleta y diagrama */
+.palette {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.diagram {
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Estilos para el select personalizado */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  appearance: none;
+}
+
+select option {
+  background: #1f2937;
+  color: white;
+}
+
+/* Estilos para el slider de profundidad */
+input[type="range"] {
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  background: #12c8c1;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 8px;
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: #12c8c1;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 1024px) {
+  .grid-cols-12 {
+    grid-template-columns: 1fr;
+  }
+  
+  .col-span-3,
+  .col-span-9 {
+    grid-column: span 12;
+  }
+  
+  #myPaletteDiv {
+    height: 200px;
+  }
+}
+
+/* Mejoras en la toolbar */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .flex-wrap .flex {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.75rem;
+  }
+  
+  /* Slider más pequeño en móvil */
+  input[type="range"] {
+    width: 60px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+  }
+  
+  input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+/* Animaciones suaves */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estado activo para botones de relaciones */
+button.bg-\[--color\] {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para mejorar la legibilidad */
+.backdrop-filter {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Mejoras adicionales para el texto del nivel */
+#levelDisplay {
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Efectos de hover para elementos interactivos */
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(18, 200, 193, 0.3);
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(18, 200, 193, 0.3);
+}
+
+/* Esconder el textarea modelo */
+.hidden {
+  display: none !important;
+}
+
+/* Mejoras para la accesibilidad */
+button:focus {
+  outline: 2px solid rgba(18, 200, 193, 0.5);
+  outline-offset: 2px;
+}
+
+select:focus {
+  outline: 2px solid rgba(18, 200, 193, 0.5);
+  outline-offset: 2px;
+}
+
+/* Animación para el cambio de estado de botones */
+button[class*="bg-[#"] {
+  position: relative;
+  overflow: hidden;
+}
+
+button[class*="bg-[#"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+button[class*="bg-[#"]:hover::before {
+  left: 100%;
+}
